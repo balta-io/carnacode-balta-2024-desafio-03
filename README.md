@@ -25,4 +25,4 @@ Neste terceiro desafio, adicionamos suporte a PWA e publicamos a aplicação com
 * << INFORMAR A IDE UTILIZADA >>
 
 # Recompensa
-- BADGE
+<img src="https://baltaio.blob.core.windows.net/temp/carnacode-badge-desafio-03.png" alt="CarnaCode 2024 - Terceiro Desafio Completo" width="256" />
