@@ -1,6 +1,6 @@
 ![banner-carnacode](https://github.com/balta-io/carnacode-balta-2024-desafio-01/assets/965305/b8cc442c-d64f-4dd1-9414-7fc896b47183)
 
-# CarnaCode 2024 - Desafio 2
+# CarnaCode 2024 - Desafio 3
 O CarnaCode é um evento online e gratuito que acontece nos dias 10, 11, 12 e 13 de Fevereiro, onde você terá a oportunidade de codificar uma aplicação Web (Blazor + PWA) completa, do começo ao fim.
 
 
@@ -36,12 +36,18 @@ Avançado:
 * ASP.NET
 * Razor
 * Blazor
+* PWA
+* Git
+* GitHub
+* CI/CD
+* GitHub Actions
+* GitHub Pages
 
 ### Ferramentas Utilizadas
 * Visual Studio
 
 # Recompensa
-<img src="https://baltaio.blob.core.windows.net/temp/carnacode-badge-desafio-02.png" alt="CarnaCode 2024 - Segundo Desafio Completo" width="256" />
+<img src="https://baltaio.blob.core.windows.net/temp/carnacode-badge-desafio-03.png" alt="CarnaCode 2024 - Terceiro Desafio Completo" width="256" />
 
  ###  Grupo 01
 * [Eliane Henriqueta](https://github.com/Elianehenri)
@@ -85,4 +91,8 @@ Avançado:
     1. No Visual Studio basta clicar com botão direito no projeto e escolher Publish...
     2. Escolher a opção de publicação para uma pasta.
     3. Publicar a aplicação.
-   
+5. Executar um servidor web
+    1. ```npm install -g http-server```
+    2. Navegar até a pasta wwwroot que está dentro da pasta publicada (procurar o último nível)
+    3. Executar ```http-server -c1```
+    4. Abrir no browser.
