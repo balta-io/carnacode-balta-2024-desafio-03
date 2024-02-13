@@ -1,0 +1,99 @@
+﻿
+pageTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center; 
+}
+
+/* Estilo para o título principal */
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center; 
+}
+
+/* Estilos para o container do formulário */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+
+/* Estilos para os inputs de texto */
+.input-text {
+    color: #555;
+    background-color: #000;
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;  
+    width: 100%;  
+    box-sizing: border-box;  
+}
+
+
+/* Estilos para a caixa de seleção "Eu tenho 65 anos ou mais" */
+.checkbox-container {
+    display: flex;  
+    align-items: center;  
+    flex-direction: column;  
+}
+
+.checkbox {
+    margin-right: 5px;
+}
+
+/* Estilos para os botões */
+.btn1, .btn2 {
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 15px;
+    box-sizing: border-box;  
+    text-align: center;  
+}
+
+.btn1 {
+    background-color: #45fefe;
+    border: 2px solid #45fefe;
+    color: #000;
+}
+
+.btn2 {
+    background-color: #fff;
+    border: 2px solid #45fefe;
+    color: #000;
+}
+
+    .btn1:hover, .btn2:hover {
+        background-color: #ceeeee;
+        border-color: #ceeeee;
+    }
+
+/* Ajuste para os botões ficarem um abaixo do outro */
+.btn-container {
+    display: flex;
+    flex-direction: column;  
+    align-items: center;  
+}
+
+/* Classe de espaçamento entre os inputs */
+.input-spacing {
+    margin-bottom: 15px;
+}

@@ -1,0 +1,34 @@
+/* Media query para telas menores */
+@media screen and (max-width: 600px) {
+    .titulo {
+        font-size: 1.5rem;
+    }
+
+    .input-text {
+        width: 100%;
+    }
+
+    .mais65anos {
+        align-self: flex-start;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .history .container {
+        padding: 0 0.625rem;
+    }
+
+    .imagem .logo {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .imagem .logo {
+        width: 70%;
+    }
+}

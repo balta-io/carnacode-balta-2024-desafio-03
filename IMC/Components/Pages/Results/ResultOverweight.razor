@@ -1,0 +1,46 @@
+﻿ @page "/results/sobrepeso"
+
+<link rel="stylesheet" href="/ResultOverWeight.razor.css" />
+
+
+
+<body>
+    <div class="container-peso-ideal">
+        <div class="logo-imc">
+            <div class="logo">
+                <img src="./icon.png" alt="logoIMC">
+            </div>
+        </div>
+        <div class="card">
+
+            <div class="card-body">
+
+
+                <div class="result-page">
+                    <h2>⛔ Sobrepeso</h2>
+                    <p>Cuidado você está com sobrepeso, dê uma atenção para sua saúde</p>
+
+                    <div class="btn-group">
+                        <button class="btn " @onclick="ImcCalculator">Registrar medidas</button>
+                        <button class="btn" @onclick="HistoryResult">Ver meu histórico</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+@code {
+    private void ImcCalculator()
+    {
+        //cria logica pra ir pra pagina de calculo
+
+    }
+
+    private void HistoryResult()
+    {
+        //cria logica pra ir pra pagina de RESULTADO
+    }
+}
+

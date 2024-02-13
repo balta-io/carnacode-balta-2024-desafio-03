@@ -1,0 +1,101 @@
+﻿.imagem {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 1.25rem;
+}
+
+	.imagem .logo img {
+		max-width: 100%;
+	}
+
+	.imagem .logo {
+		width: 30%;
+		border-radius: 1.875rem;
+		border: 3px solid var(--cor-button);
+		margin: 0 auto; /* Adiciona margin auto para centralizar */
+	}
+
+.titulo {
+	font-size: 1.875rem;
+	margin-bottom: 1.25rem; /* Adiciona um espaço abaixo do título */
+}
+
+.input-text-history {
+	width: 100%;
+	height: 2.5rem;
+	border: 1px solid var(--cor-gray02);
+	outline: none;
+	border-radius: 1.25rem;
+	background-color: var(--cor-gray01);
+	padding: 0 0.625rem;
+	margin-bottom: 1.25rem;
+	border: 2px solid var(--cor-gray01);
+}
+
+	.input-text-history::placeholder {
+		color: var(--cor-gray02);
+	}
+
+.history {
+	padding: 0.625rem;
+}
+
+.card {
+	display: flex;
+	margin-top: 1.25rem;
+}
+
+	.card .card-history {
+		width: 20%;
+		display: flex;
+		flex-direction: column;
+		padding: 0.5rem;
+	}
+
+	.card .card-history-content {
+		width: 80%;
+		display: flex;
+		flex-direction: column;
+		border-bottom: 1px solid var(--cor-gray01);
+	}
+
+.card-history .history-log {
+	border-radius: 0.625rem;
+	background-color: var(--cor-gray01);
+	width: 3.125rem;
+	height: 3.125rem;
+}
+
+.card-history-head {
+	display: flex;
+	margin: 0.1875rem 0;
+}
+
+	.title,
+	.card-history-head .time-history {
+		width: 50%;
+		text-align: left;
+		color: var( --color-font);
+	}
+
+	.card-history-head .time-history {
+		padding: 0 0.3125rem;
+		text-align: end;
+	}
+
+.text-history {
+	font-size: 0.8125rem;
+	margin: 0.1875rem 0;
+	margin-bottom: 0.625rem;
+	text-align: left;
+	color: var( --color-font);
+}
+
+.custom-icon-verde {
+	color: green;
+}
+
+.custom-icon-vermelho {
+	color: red;
+}

@@ -3,7 +3,7 @@ Estou participando do CarnaCode 2024 do **(Mencionar perfil do balta.io)**, um e
 Você também pode participar se inscrevendo neste link:
 👉 https://go.balta.io/carnacode-2024
 
-Este é o resultado do terceiro desafio, onde pude desenvolver minhas habilidades com Git, GitHub, CI/CD, DevOps e PWA. Neste terceiro desafio, adicionamos suporte a PWA e publicamos a aplicação completa para calcular o IMC (Índice de Massa Muscular) que fizemos nos desafios anteriores.
+Este é o resultado do segundo desafio, onde pude desenvolver minhas habilidades com ASP.NET, Razor e Blazor, criando um App completo para cálculo de IMC.
 👉 LINK PARA SEU PROJETO NO GITHUB
 
 #dev #developer #desenvolvedor #programming #programação #programador #web #webcomponents #webdev #frontend #html #css #microsoft #csharp #dotnet #aspnet #razor #razorpages #blazor #blazorwasm #wasm #webassembly #pwa

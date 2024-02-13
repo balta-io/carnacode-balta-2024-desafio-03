@@ -1,0 +1,92 @@
+﻿@page "/history"
+@using IMC.Services
+@using IMC.Models
+@using IMC.Extensions
+@inject IBmiService BmiService;
+
+
+<link rel="stylesheet" href="History.razor.css" />
+
+<div class="container">
+	<div class="imagem">
+		<div class="logo">
+			<img src="./assets/icon-no-bg.png" alt="Logo da aplicação">
+		</div>
+	</div>
+	<h1 class="titulo">Histórico</h1>
+	<div class="history">
+		<input id="pesquisa-historico" type="text" class="input-text-history" placeholder="Pesquisar...">
+		@foreach (var registro in _bmiHistory)
+		{
+			<div class="card">
+				<div class="card-history">
+					<div class="history-log"></div>
+				</div>
+				<div class="card-history-content">
+					<div class="card-history-head">
+						<span class="title">@registro.Titulo <span class=@registro.CssIcone></span></span>
+						<span class="time-history">@registro.TextoDataHora</span>
+					</div>
+					<div class="text-history">
+						<p>@registro.Texto</p>
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+</div>
+
+@code {
+	private List<RegistroHistoricoViewModel> _bmiHistory = new ();
+
+	protected override async Task OnInitializedAsync()
+	{
+		var bmis = await BmiService.ListarAsync();
+
+		_bmiHistory = bmis
+			.OrderByDescending(bmi => bmi.DataCalculo)
+			.Select(bmi => new RegistroHistoricoViewModel(bmi))
+			.ToList();
+	}
+
+	public class RegistroHistoricoViewModel
+	{
+		private const string CssIconeOk = "custom-icon-verde fa-solid fa-square-check";
+		private const string CssIconeRuim = "custom-icon-vermelho fa-solid fa-circle-minus";
+		
+		private static readonly IReadOnlyDictionary<BMISituationEnum, string> Mensagens = new Dictionary<BMISituationEnum, string>
+		{
+			{ BMISituationEnum.MuitoAbaixoDoPeso, "Você precisa se cuidar, está muito abaixo do peso!" },
+			{ BMISituationEnum.AbaixoDoPeso, "Estamos quase lá! Tente comer mais vezes ao longo do dia!" },
+			{ BMISituationEnum.PesoNormal, "Parabéns, você está no seu peso ideal, continue mantendo este estilo!" },
+			{ BMISituationEnum.AcimaDoPeso, "Estamos quase lá! Faça alguns ajustes para ficar no peso ideal!" },
+			{ BMISituationEnum.ObesidadeI, "Atenção você está muito acima do peso!" },
+			{ BMISituationEnum.ObesidadeII, "Cuiddo redobrado! Você está muito acima do peso!" },
+			{ BMISituationEnum.ObesidadeIII, "Procure um médico. Você está muito acima do peso!" },
+		};
+
+		public string Titulo {get; set;}
+		public string CssIcone { get; set; }
+		public string TextoDataHora {get; set;}
+		public string Texto { get; set; }
+
+		public RegistroHistoricoViewModel(BMIModel bmi)
+		{
+			Titulo = bmi.Situacao.GetEnumDescription();
+
+			CssIcone = bmi.Situacao == BMISituationEnum.PesoNormal
+				? CssIconeOk
+				: CssIconeRuim;
+
+			var dataDif = (DateTime.UtcNow - bmi.DataCalculo);
+			TextoDataHora = dataDif.Hours < 1
+				? $"{dataDif.Minutes}m atrás"
+				: bmi.DataCalculo
+					.ToLocalTime()
+					.ToShortDateString();
+
+
+			Texto = Mensagens[bmi.Situacao];
+		}
+	}
+}
