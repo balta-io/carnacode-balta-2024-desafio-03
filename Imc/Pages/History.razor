@@ -1,0 +1,75 @@
+﻿@page "/history"
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+
+<PageTitle>History</PageTitle>
+
+<div class="container col-md-6">
+    <div class="text-center">
+        <img class="img-thumbnail mb-3" src="icon-no-bg.png" alt="Logo" style="height: 95px; width: 95px;">
+        <h1 class="mb-3">Histórico</h1>
+    </div>
+
+    <EditForm Model="Model" OnValidSubmit="Pesquisar" FormName="PesquisarHistorico">
+        <InputText class="form-control mb-3" @bind-Value="Model.Pesquisa" placeholder="Pesquisar..." />
+    </EditForm>
+
+    <div class="list-group list-group-flush">
+        @if (FilteredModelList != null && FilteredModelList.Any())
+        {
+            @foreach (var item in FilteredModelList)
+            {
+                var ImcResult = item.Calcular();
+                <div class="list-group-item border-0">
+                    <div class="d-flex">
+                        <img class="img-thumbnail me-3" alt="Histórico" src="icon-no-bg.png" style="height: 64px; width: 64px;">
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="d-flex flex-grow-1">
+                                    <h6 class="text-start fw-bold me-2">@ImcResult.Title @ImcResult.Icon</h6>
+                                    <span class="text-muted ms-auto">@item.Inserido</span>
+                                </div>
+                            </div>
+
+                            <h6>@ImcResult.Body</h6>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-center">Não existem informações para visualização</p>
+        }
+    </div>
+</div>
+
+@code {
+    private HistoryModel Model { get; set; } = new();
+    private List<Imc>? ModelList { get; set; }
+    private List<Imc>? FilteredModelList { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        ModelList = await LocalStorage.GetItemAsync<List<Imc>>("ImcList");
+        if (ModelList != null)
+            ModelList.Reverse();
+
+        FilteredModelList = ModelList;
+    }
+
+    private void Pesquisar()
+    {
+        if (string.IsNullOrEmpty(Model.Pesquisa))
+        {
+            FilteredModelList = ModelList?.ToList();
+            return;
+        }
+        else
+        {
+            FilteredModelList = ModelList!.Where(x => x.Calcular().Title.ToLower().Contains(Model.Pesquisa.ToLower())).ToList();
+
+        }
+    }
+}

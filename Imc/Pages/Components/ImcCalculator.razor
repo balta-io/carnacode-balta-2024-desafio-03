@@ -1,0 +1,47 @@
+@using System.ComponentModel.DataAnnotations
+<EditForm Model="Model" OnValidSubmit="Calcular" FormName="ImcCalculator">
+    <div class="container col-md-4">
+        <h1 class="text-center mb-3">Cálculo de IMC</h1>
+        
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="d-flex flex-column">
+            <div class="mb-3">
+                <InputNumber type="number" class="form-control" @bind-Value="Model.Altura" placeholder="Altura (metros)" />
+            </div>
+
+            <div class="mb-3">
+                <InputNumber type="number" class="form-control" @bind-Value="Model.Peso" placeholder="Peso (kg)" />
+            </div>
+
+            <div class="mb-3">
+                <InputSelect class="form-select" @bind-Value="Model.Sexo">
+                    <option value="@ESexo.Masculino">Masculino</option>
+                    <option value="@ESexo.Feminino">Feminino</option>
+                </InputSelect>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-check">
+                    <InputCheckbox id="older" class="form-check-input" type="checkbox" @bind-Value="Model.Idoso" />
+                    <label for="older" class="form-check-label">Eu tenho 65 anos ou mais</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mb-2" @onclick="Calcular">Calcular meu IMC</button>
+            @ChildContent
+        </div>
+    </div>
+</EditForm>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public Imc Model { get; set; } = new();
+    
+    [Parameter]
+    public EventCallback Calcular { get; set; }
+}
