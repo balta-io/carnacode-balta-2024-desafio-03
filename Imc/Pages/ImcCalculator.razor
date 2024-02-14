@@ -1,0 +1,56 @@
+﻿@page "/imc"
+
+@inject NavigationManager NavigationManager
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+
+<PageTitle>Cálculo de IMC</PageTitle>
+
+<Imc.Pages.Components.ImcCalculator Model="Imc" Calcular="CalcularImc">
+    <button type="button" class="btn btn-secondary" @onclick="EntendaCalculo">Entenda o cálculo</button>
+</Imc.Pages.Components.ImcCalculator>
+
+<ModalDialog Title="@Title" Body="@Body" ConfirmationButton="SalvarHistoricoAsync" ShowModal="ShowModal">
+    <button type="button" class="btn btn-secondary" @onclick="VerHistorico">Ver meu histórico</button>
+</ModalDialog>
+
+@code {
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; } = null!;
+    private Imc Imc { get; set; } = new();
+    
+    private bool ShowModal = false;
+    private string Title = String.Empty;
+    private string Body = String.Empty;
+
+    private async Task EntendaCalculo()
+    {
+        await JSRuntime.InvokeAsync<object>("open", "https://www.unimedcampinas.com.br/blog/cuidado-continuo/entenda-o-que-e-calculo-imc-e-para-que-serve", "_blank");
+        return;
+    }
+
+    private void VerHistorico()
+    {
+        NavigationManager.NavigateTo("history");
+        return;
+    }
+
+    private void CalcularImc()
+    {
+        var result = Imc.Calcular();
+        Title = result.Icon + ' ' + result.Title;
+        Body = result.Body;
+        StateHasChanged();
+        ShowModal = true;
+        return;
+    }
+
+    private async Task SalvarHistoricoAsync()
+    {
+        var imcList = await LocalStorage.GetItemAsync<List<Imc>>("ImcList") ?? new List<Imc>();
+        imcList.Add(Imc);
+        await LocalStorage.SetItemAsync("ImcList", imcList);
+        VerHistorico();
+        return;
+    }
+
+}

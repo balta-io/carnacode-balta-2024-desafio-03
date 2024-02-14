@@ -1,0 +1,52 @@
+@if (ShowModal)
+{
+    <div class="modal" id="myModal" style="display:block; background-color: #2E1462;" aria-modal="true" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="text-center" style="top: 4rem; position: relative; z-index: 999;">
+                <img class="img-thumbnail" src="icon-no-bg.png" alt="Logo" style="height: 95px; width: 95px; border: 3px solid #45FEFE; border-radius: 15px;">
+            </div>
+
+            <div class="modal-content" style="border-radius: 35px; margin-top: 30px">
+                <div class="d-flex m-3">
+                    <div class="col text-center">
+                        <h4 style="margin-top: 2rem">@Title</h4>
+                        <p>@Body</p>
+
+                        <div class="col mb-3">
+                            <button type="button" @onclick="ConfirmationAction" class="btn btn-primary">Registrar medidas</button>
+                        </div>
+
+                        <div class="col">
+                            @ChildContent
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@code {
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Body { get; set; } = string.Empty;
+
+    [Parameter]
+    public EventCallback ConfirmationButton { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public bool ShowModal { get; set; } = false;
+
+    private async Task ConfirmationAction() {
+        await ConfirmationButton.InvokeAsync();
+        ShowModal = false;
+        StateHasChanged();
+    }
+}

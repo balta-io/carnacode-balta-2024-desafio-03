@@ -1,0 +1,8 @@
+.btn-primary {
+  color: #000;
+  background-color: #45fefe;
+  border: none;
+  filter: drop-shadow(0 0 0.1rem #000);
+  margin-bottom: 10px;
+  font-weight: bold;
+}
